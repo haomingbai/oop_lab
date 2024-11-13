@@ -24,6 +24,8 @@ dependencies {
     // This dependency is used by the application.
     implementation(libs.guava)
     implementation("org.dom4j:dom4j:2.1.4")
+    implementation("org.jsoup:jsoup:1.18.1")
+    implementation("org.dom4j:dom4j:2.1.4")
 }
 
 // Apply a specific Java toolchain to ease working on different environments.

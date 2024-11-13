@@ -3,11 +3,49 @@
  */
 package lab4;
 
+import java.util.Scanner;
+
 public class UserSubSystem {
 
     Team team;
 
     TeamFormater teamFormater;
     public static void main(String[] args) {
+        UserSubSystem userSubSystem = new UserSubSystem();
+        Student creator = new Student("2023301350", "张三", "12345678901", "haomingbai@hotmail.com", "Material School", "2023301350", false, 2023);
+        Student student1 = new Student("2023301351", "李四", "12345678902", "shiyuanlv@hotmail.com", "Material School", "2023301351", false, 2023);
+        Student student2 = new Student("2023301352", "王五", "12345678903", "shangliu@mail.nwpu.edu.cn", "Material School", "2023301352", false, 2023);
+        Teacher teacher1 = new Teacher("2023301353", "赵六", "12345678904", "xie.zhang@nwpu.edu.cn", "Material School", "2023301353");
+        Teacher teacher2 = new Teacher("2023301354", "孙七", "12345678905", "hui_chen@nwpu.edu.cn", "Material School", "2023301354");
+        userSubSystem.team = new Team("2023301355", "软件工程", "Material School", creator);
+
+        userSubSystem.team.addStudent(student1);
+        userSubSystem.team.addStudent(student2);
+        userSubSystem.team.addTeacher(teacher1);
+        userSubSystem.team.addTeacher(teacher2);
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Please choose the format of the team information: ");
+        System.out.println("[0] Quit \n[1] Display team (Plain Text)\n[2] Display team (HTML)\n[3] Display team (XML)");
+
+        while (scanner.hasNextInt()) {
+            int choice = scanner.nextInt();
+            if (choice == 0) {
+                System.out.println("Bye!");
+                break;
+            } else if (choice == 1) {
+                userSubSystem.teamFormater = new PlainTextFormater();
+                System.out.println(userSubSystem.teamFormater.formatTeam(userSubSystem.team));
+            } else if (choice == 2) {
+                userSubSystem.teamFormater = new HTMLTeamFormater();
+                System.out.println(userSubSystem.teamFormater.formatTeam(userSubSystem.team));
+            } else if (choice == 3) {
+                userSubSystem.teamFormater = new XMLTeamFormater();
+                System.out.println(userSubSystem.teamFormater.formatTeam(userSubSystem.team));
+            } else {
+                System.out.println("Invalid choice.");
+            }
+        }
     }
 }
