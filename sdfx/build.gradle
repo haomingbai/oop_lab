@@ -17,8 +17,8 @@ ext {
     junitVersion = '5.10.2'
 }
 
-sourceCompatibility = '23'
-targetCompatibility = '23'
+sourceCompatibility = '21'
+targetCompatibility = '21'
 
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
@@ -38,10 +38,6 @@ dependencies {
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
-    implementation 'com.alibaba.fastjson2:fastjson2:2.0.53'
-    implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.18.2'
-    implementation 'org.jsoup:jsoup:1.18.2'
-    implementation files('./lib/lab05.jar')
 }
 
 test {
